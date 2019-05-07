@@ -1,0 +1,100 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "networkWatcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "connectionMonitorName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters that define the operation to create a connection monitor.",
+            "properties": {
+                "location": {
+                    "description": "Connection monitor location.",
+                    "type": "string"
+                },
+                "properties": {
+                    "x-ms-client-flatten": true,
+                    "description": "Parameters that define the operation to create a connection monitor.",
+                    "properties": {
+                        "autoStart": {
+                            "default": true,
+                            "description": "Determines if the connection monitor will start automatically once created.",
+                            "type": "boolean"
+                        },
+                        "destination": {
+                            "description": "Describes the destination of connection monitor.",
+                            "properties": {
+                                "address": {
+                                    "description": "Address of the connection monitor destination (IP or domain name).",
+                                    "type": "string"
+                                },
+                                "port": {
+                                    "description": "The destination port used by connection monitor.",
+                                    "type": "integer"
+                                },
+                                "resourceId": {
+                                    "description": "The ID of the resource used as the destination by connection monitor.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "monitoringIntervalInSeconds": {
+                            "default": 60,
+                            "description": "Monitoring interval in seconds.",
+                            "type": "integer"
+                        },
+                        "source": {
+                            "description": "Describes the source of connection monitor.",
+                            "properties": {
+                                "port": {
+                                    "description": "The source port used by connection monitor.",
+                                    "type": "integer"
+                                },
+                                "resourceId": {
+                                    "description": "The ID of the resource used as the source by connection monitor.",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "resourceId"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "source",
+                        "destination"
+                    ]
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Connection monitor tags.",
+                    "type": "object"
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

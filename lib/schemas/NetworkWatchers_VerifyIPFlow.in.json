@@ -1,0 +1,84 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "networkWatcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters that define the IP flow to be verified.",
+            "properties": {
+                "direction": {
+                    "description": "The direction of the packet represented as a 5-tuple.",
+                    "enum": [
+                        "Inbound",
+                        "Outbound"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": true,
+                        "name": "Direction"
+                    }
+                },
+                "localIPAddress": {
+                    "description": "The local IP address. Acceptable values are valid IPv4 addresses.",
+                    "type": "string"
+                },
+                "localPort": {
+                    "description": "The local port. Acceptable values are a single integer in the range (0-65535). Support for * for the source port, which depends on the direction.",
+                    "type": "string"
+                },
+                "protocol": {
+                    "description": "Protocol to be verified on.",
+                    "enum": [
+                        "TCP",
+                        "UDP"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": true,
+                        "name": "IpFlowProtocol"
+                    }
+                },
+                "remoteIPAddress": {
+                    "description": "The remote IP address. Acceptable values are valid IPv4 addresses.",
+                    "type": "string"
+                },
+                "remotePort": {
+                    "description": "The remote port. Acceptable values are a single integer in the range (0-65535). Support for * for the source port, which depends on the direction.",
+                    "type": "string"
+                },
+                "targetNicResourceId": {
+                    "description": "The NIC ID. (If VM has multiple NICs and IP forwarding is enabled on any of them, then this parameter must be specified. Otherwise optional).",
+                    "type": "string"
+                },
+                "targetResourceId": {
+                    "description": "The ID of the target resource to perform next-hop on.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "targetResourceId",
+                "direction",
+                "protocol",
+                "localPort",
+                "remotePort",
+                "localIPAddress",
+                "remoteIPAddress"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

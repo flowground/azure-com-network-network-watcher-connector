@@ -1,0 +1,53 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "networkWatcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters that define the representation of topology.",
+            "properties": {
+                "targetResourceGroupName": {
+                    "description": "The name of the target resource group to perform topology on.",
+                    "type": "string"
+                },
+                "targetSubnet": {
+                    "description": "Reference to another subresource.",
+                    "properties": {
+                        "id": {
+                            "description": "Resource ID.",
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                },
+                "targetVirtualNetwork": {
+                    "description": "Reference to another subresource.",
+                    "properties": {
+                        "id": {
+                            "description": "Resource ID.",
+                            "type": "string"
+                        }
+                    },
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

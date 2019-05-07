@@ -1,0 +1,34 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "networkWatcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters that define the resource to query the troubleshooting result.",
+            "properties": {
+                "targetResourceId": {
+                    "description": "The target resource ID to query the troubleshooting result.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "targetResourceId"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

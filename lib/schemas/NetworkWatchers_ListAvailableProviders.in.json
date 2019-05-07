@@ -1,0 +1,46 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "networkWatcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Constraints that determine the list of available Internet service providers.",
+            "properties": {
+                "azureLocations": {
+                    "description": "A list of Azure regions.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "city": {
+                    "description": "The city or town for available providers list.",
+                    "type": "string"
+                },
+                "country": {
+                    "description": "The country for available providers list.",
+                    "type": "string"
+                },
+                "state": {
+                    "description": "The state for available providers list.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

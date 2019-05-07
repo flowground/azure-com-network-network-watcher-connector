@@ -1,0 +1,77 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "networkWatcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Geographic and time constraints for Azure reachability report.",
+            "properties": {
+                "azureLocations": {
+                    "description": "Optional Azure regions to scope the query to.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "endTime": {
+                    "description": "The end time for the Azure reachability report.",
+                    "format": "date-time",
+                    "type": "string"
+                },
+                "providerLocation": {
+                    "description": "Parameters that define a geographic location.",
+                    "properties": {
+                        "city": {
+                            "description": "The name of the city or town.",
+                            "type": "string"
+                        },
+                        "country": {
+                            "description": "The name of the country.",
+                            "type": "string"
+                        },
+                        "state": {
+                            "description": "The name of the state.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "country"
+                    ],
+                    "type": "object"
+                },
+                "providers": {
+                    "description": "List of Internet service providers.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "startTime": {
+                    "description": "The start time for the Azure reachability report.",
+                    "format": "date-time",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "providerLocation",
+                "startTime",
+                "endTime"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

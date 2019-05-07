@@ -1,0 +1,48 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "networkWatcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters that define the source and destination endpoint.",
+            "properties": {
+                "destinationIPAddress": {
+                    "description": "The destination IP address.",
+                    "type": "string"
+                },
+                "sourceIPAddress": {
+                    "description": "The source IP address.",
+                    "type": "string"
+                },
+                "targetNicResourceId": {
+                    "description": "The NIC ID. (If VM has multiple NICs and IP forwarding is enabled on any of the nics, then this parameter must be specified. Otherwise optional).",
+                    "type": "string"
+                },
+                "targetResourceId": {
+                    "description": "The resource identifier of the target resource against which the action is to be performed.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "targetResourceId",
+                "sourceIPAddress",
+                "destinationIPAddress"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

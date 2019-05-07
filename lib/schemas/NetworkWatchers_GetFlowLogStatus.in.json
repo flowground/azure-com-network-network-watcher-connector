@@ -1,0 +1,34 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "networkWatcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters that define a resource to query flow log and traffic analytics (optional) status.",
+            "properties": {
+                "targetResourceId": {
+                    "description": "The target resource where getting the flow log and traffic analytics (optional) status.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "targetResourceId"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

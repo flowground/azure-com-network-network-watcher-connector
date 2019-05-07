@@ -1,0 +1,53 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "networkWatcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters that define the resource to troubleshoot.",
+            "properties": {
+                "properties": {
+                    "x-ms-client-flatten": true,
+                    "description": "Storage location provided for troubleshoot.",
+                    "properties": {
+                        "storageId": {
+                            "description": "The ID for the storage account to save the troubleshoot result.",
+                            "type": "string"
+                        },
+                        "storagePath": {
+                            "description": "The path to the blob to save the troubleshoot result in.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "storageId",
+                        "storagePath"
+                    ]
+                },
+                "targetResourceId": {
+                    "description": "The target resource to troubleshoot.",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "targetResourceId",
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

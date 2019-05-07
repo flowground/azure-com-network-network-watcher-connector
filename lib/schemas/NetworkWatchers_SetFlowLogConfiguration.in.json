@@ -1,0 +1,132 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "networkWatcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Information on the configuration of flow log and traffic analytics (optional) .",
+            "properties": {
+                "flowAnalyticsConfiguration": {
+                    "description": "Parameters that define the configuration of traffic analytics.",
+                    "properties": {
+                        "networkWatcherFlowAnalyticsConfiguration": {
+                            "description": "Parameters that define the configuration of traffic analytics.",
+                            "properties": {
+                                "enabled": {
+                                    "description": "Flag to enable/disable traffic analytics.",
+                                    "type": "boolean"
+                                },
+                                "trafficAnalyticsInterval": {
+                                    "description": "The interval in minutes which would decide how frequently TA service should do flow analytics",
+                                    "type": "integer"
+                                },
+                                "workspaceId": {
+                                    "description": "The resource guid of the attached workspace",
+                                    "type": "string"
+                                },
+                                "workspaceRegion": {
+                                    "description": "The location of the attached workspace",
+                                    "type": "string"
+                                },
+                                "workspaceResourceId": {
+                                    "description": "Resource Id of the attached workspace ",
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "enabled",
+                                "workspaceId",
+                                "workspaceRegion",
+                                "workspaceResourceId"
+                            ],
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "networkWatcherFlowAnalyticsConfiguration"
+                    ],
+                    "type": "object"
+                },
+                "properties": {
+                    "x-ms-client-flatten": true,
+                    "description": "Parameters that define the configuration of flow log.",
+                    "properties": {
+                        "enabled": {
+                            "description": "Flag to enable/disable flow logging.",
+                            "type": "boolean"
+                        },
+                        "format": {
+                            "description": "Parameters that define the flow log format.",
+                            "properties": {
+                                "type": {
+                                    "description": "The file type of flow log.",
+                                    "enum": [
+                                        "JSON"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "FlowLogFormatType"
+                                    }
+                                },
+                                "version": {
+                                    "default": 0,
+                                    "description": "The version (revision) of the flow log.",
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "retentionPolicy": {
+                            "description": "Parameters that define the retention policy for flow log.",
+                            "properties": {
+                                "days": {
+                                    "default": 0,
+                                    "description": "Number of days to retain flow log records.",
+                                    "type": "integer"
+                                },
+                                "enabled": {
+                                    "default": false,
+                                    "description": "Flag to enable/disable retention.",
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "storageId": {
+                            "description": "ID of the storage account which is used to store the flow log.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "storageId",
+                        "enabled"
+                    ]
+                },
+                "targetResourceId": {
+                    "description": "The ID of the resource to configure for flow log and traffic analytics (optional) .",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "targetResourceId",
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

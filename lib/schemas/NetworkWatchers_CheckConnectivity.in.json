@@ -1,0 +1,128 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "networkWatcherName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Parameters that determine how the connectivity check will be performed.",
+            "properties": {
+                "destination": {
+                    "description": "Parameters that define destination of connection.",
+                    "properties": {
+                        "address": {
+                            "description": "The IP address or URI the resource to which a connection attempt will be made.",
+                            "type": "string"
+                        },
+                        "port": {
+                            "description": "Port on which check connectivity will be performed.",
+                            "type": "integer"
+                        },
+                        "resourceId": {
+                            "description": "The ID of the resource to which a connection attempt will be made.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "protocol": {
+                    "description": "Network protocol.",
+                    "enum": [
+                        "Tcp",
+                        "Http",
+                        "Https",
+                        "Icmp"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": true,
+                        "name": "Protocol"
+                    }
+                },
+                "protocolConfiguration": {
+                    "description": "Configuration of the protocol.",
+                    "properties": {
+                        "HTTPConfiguration": {
+                            "description": "HTTP configuration of the connectivity check.",
+                            "properties": {
+                                "headers": {
+                                    "description": "List of HTTP headers.",
+                                    "items": {
+                                        "description": "Describes the HTTP header.",
+                                        "properties": {
+                                            "name": {
+                                                "description": "The name in HTTP header.",
+                                                "type": "string"
+                                            },
+                                            "value": {
+                                                "description": "The value in HTTP header.",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    },
+                                    "type": "array"
+                                },
+                                "method": {
+                                    "description": "HTTP method.",
+                                    "enum": [
+                                        "Get"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "HTTPMethod"
+                                    }
+                                },
+                                "validStatusCodes": {
+                                    "description": "Valid status codes.",
+                                    "items": {
+                                        "type": "integer"
+                                    },
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                },
+                "source": {
+                    "description": "Parameters that define the source of the connection.",
+                    "properties": {
+                        "port": {
+                            "description": "The source port from which a connectivity check will be performed.",
+                            "type": "integer"
+                        },
+                        "resourceId": {
+                            "description": "The ID of the resource from which a connectivity check will be initiated.",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "resourceId"
+                    ],
+                    "type": "object"
+                }
+            },
+            "required": [
+                "source",
+                "destination"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
